@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cloud Course Design</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Arial, "Microsoft YaHei", sans-serif;
+        background: #f6f7f9;
+        color: #1f2937;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+
+      main {
+        width: min(720px, calc(100% - 32px));
+        padding: 32px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 12px 32px rgb(15 23 42 / 8%);
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 28px;
+      }
+
+      p {
+        margin: 8px 0;
+        line-height: 1.7;
+      }
+
+      code {
+        padding: 2px 6px;
+        border-radius: 4px;
+        background: #eef2f7;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 16px;
+        border: 0;
+        border-radius: 6px;
+        background: #2563eb;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      pre {
+        margin-top: 16px;
+        padding: 16px;
+        overflow: auto;
+        border-radius: 6px;
+        background: #111827;
+        color: #d1d5db;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>云计算技术课程设计</h1>
+      <p>学生信息：<strong>学号_姓名待替换</strong></p>
+      <p>前端服务：Nginx 静态页面</p>
+      <p>后端接口：<code>/api/ping</code></p>
+      <p>缓存服务：Redis</p>
+      <button id="pingButton" type="button">测试后端接口</button>
+      <pre id="result">点击按钮后显示接口返回结果</pre>
+    </main>
+
+    <script>
+      const button = document.querySelector("#pingButton");
+      const result = document.querySelector("#result");
+
+      button.addEventListener("click", async () => {
+        result.textContent = "请求中...";
+        try {
+          const response = await fetch("/api/ping");
+          const data = await response.json();
+          result.textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+          result.textContent = String(error);
+        }
+      });
+    </script>
+  </body>
+</html>
