@@ -81,3 +81,5 @@ docs/*.pptx
 dist/
 build/
 site/
+
+course-cce-kubeconfig.yaml
