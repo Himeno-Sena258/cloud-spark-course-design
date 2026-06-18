@@ -1,0 +1,43 @@
+{
+  "results": [
+    {
+      "engine": "pandas",
+      "executors": 0,
+      "runs_seconds": [
+        0.6213059000001522,
+        0.5134427999983018,
+        0.5134994000000006
+      ],
+      "average_seconds": 0.5494160333328182,
+      "result_rows": 44,
+      "speedup_vs_pandas": 1.0
+    },
+    {
+      "engine": "pyspark",
+      "executors": 1,
+      "runs_seconds": [
+        9.556450905999554,
+        2.4054518919992915,
+        1.528153518000181
+      ],
+      "average_seconds": 4.496685438666343,
+      "result_rows": 44,
+      "speedup_vs_pandas": 0.12218244767767605
+    },
+    {
+      "engine": "pyspark",
+      "executors": 2,
+      "runs_seconds": [
+        10.074041386999852,
+        3.499259504999827,
+        1.6677683450006953
+      ],
+      "average_seconds": 5.080356412333458,
+      "result_rows": 44,
+      "speedup_vs_pandas": 0.10814517501154332
+    }
+  ],
+  "spark_1_to_2_speedup": 0.8851121995594341,
+  "estimated_parallel_fraction": 0.0,
+  "amdahl_theoretical_speedup_p2": 1.0
+}

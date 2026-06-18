@@ -1,0 +1,11 @@
+{
+  "engine": "pandas",
+  "executors": 0,
+  "runs_seconds": [
+    0.6213059000001522,
+    0.5134427999983018,
+    0.5134994000000006
+  ],
+  "average_seconds": 0.5494160333328182,
+  "result_rows": 44
+}
