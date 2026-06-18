@@ -1,0 +1,41 @@
+apiVersion: sparkoperator.k8s.io/v1beta2
+kind: SparkApplication
+metadata:
+  name: pyspark-wordcount
+  namespace: default
+spec:
+  type: Python
+  pythonVersion: "3"
+  mode: cluster
+  image: apache/spark-py:v3.4.0
+  imagePullPolicy: IfNotPresent
+  mainApplicationFile: local:///opt/spark/examples/src/main/python/wordcount.py
+  arguments:
+    - file:///opt/spark/input/input.txt
+  sparkVersion: "3.4.0"
+  restartPolicy:
+    type: Never
+  volumes:
+    - name: wordcount-input
+      configMap:
+        name: wordcount-input
+  driver:
+    cores: 1
+    coreRequest: "100m"
+    memory: "512m"
+    memoryOverhead: "128m"
+    serviceAccount: spark
+    volumeMounts:
+      - name: wordcount-input
+        mountPath: /opt/spark/input
+        readOnly: true
+  executor:
+    cores: 1
+    coreRequest: "100m"
+    instances: 2
+    memory: "512m"
+    memoryOverhead: "128m"
+    volumeMounts:
+      - name: wordcount-input
+        mountPath: /opt/spark/input
+        readOnly: true

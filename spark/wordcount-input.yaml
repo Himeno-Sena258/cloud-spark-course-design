@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wordcount-input
+  namespace: default
+data:
+  input.txt: |
+    cloud computing spark kubernetes
+    spark on cce
+    kubernetes spark operator
+    cloud spark analysis
